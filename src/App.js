@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+ import React, {useState} from 'react'
 
 function App() {
+  var [num, setNum] = useState([]);
+  var [n, setN] = useState(0);
+
+  var insertar = () => {
+    let nuevoN = [...num];
+    nuevoN.splice(nuevoN.length, 0, n);
+    setNum(nuevoN);
+  }
+
+  var borrar = (index) =>{
+    let nuevoN = [...num];
+    nuevoN.splice(index, 1);
+    setNum(nuevoN)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <input type='number' onChange={(e) => setN(e.target.value)}/>
+      <button onClick={insertar}>Ingresar</button>
+      <ul>
+          {num.map((numero, index) =>(
+          <li key={index}>
+            {numero} <button onClick={() => borrar(index)}>X</button>
+          </li>
+         ))}
+      </ul>
     </div>
   );
 }
