@@ -2,12 +2,13 @@
 
 function App() {
   var [num, setNum] = useState([]);
-  var [n, setN] = useState(0);
+  var [n, setN] = useState();
 
   var insertar = () => {
     let nuevoN = [...num];
     nuevoN.splice(nuevoN.length, 0, n);
     setNum(nuevoN);
+    setN('');
   }
 
   var borrar = (index) =>{
@@ -16,10 +17,13 @@ function App() {
     setNum(nuevoN)
   }
 
+  var min = Math.min(...num);
+
   return (
     <div >
-      <input type='number' onChange={(e) => setN(e.target.value)}/>
+      <input type='number' value={n} onChange={(e) => setN(e.target.value)}/>
       <button onClick={insertar}>Ingresar</button>
+      <p>Valor minimo: {min}</p>
       <ul>
           {num.map((numero, index) =>(
           <li key={index}>
