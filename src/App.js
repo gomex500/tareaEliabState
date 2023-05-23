@@ -1,4 +1,8 @@
- import React, {useState} from 'react'
+import React, {useState} from 'react'
+
+//  Crea un componente que tome un arreglo de números y muestre el
+//  valor mínimo. Utiliza una variable de estado para guardar el arreglo y
+//  mostrar el resultado.
 
 function App() {
   var [num, setNum] = useState([]);
