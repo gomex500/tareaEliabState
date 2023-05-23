@@ -2,10 +2,14 @@
 
 function App() {
   var [num, setNum] = useState([]);
-  var [n, setN] = useState();
+  var [n, setN] = useState('');
 
   var insertar = () => {
     let nuevoN = [...num];
+    if (n === '') {
+      alert('ingrese un numero')
+      return
+    }
     nuevoN.splice(nuevoN.length, 0, n);
     setNum(nuevoN);
     setN('');
